@@ -21,7 +21,7 @@
 #############################################################################
 
 {
-    "name": "Vista Backend Theme V15",
+    "name": "Vista Backend Theme",
     "description": """Minimalist and elegant backend theme for Odoo 14, Backend Theme, Theme""",
     "summary": "Vista Backend Theme V15 is an attractive theme for backend",
     "category": "Themes/Backend",

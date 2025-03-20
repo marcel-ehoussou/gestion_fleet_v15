@@ -56,7 +56,7 @@
                     </div>
                     <!-- <h6 class="sidebar_head">MENU</h6> -->
                     <div class="sidebar_head">
-                      <img src="/vista_backend_theme/static/description/icon.png"/>
+                      <img src="/vista_backend_theme/static/src/img/icons/voiture-de-luxe.png"/>
                     </div>
                     <ul class="sidebar_menu">
                         <t t-foreach="menuService.getApps()" t-as="app">

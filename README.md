@@ -1,180 +1,180 @@
-# Fleet Management System for Odoo
+# Système de Gestion de Flotte pour Odoo
 
-## Overview
-This project consists of two complementary Odoo modules that provide a comprehensive fleet management solution:
-1. `fleet_advanced_management`: Core fleet management functionality
-2. `fleet_dashboard`: Advanced analytics and KPI tracking
+## Vue d'ensemble
+Ce projet se compose de deux modules complémentaires Odoo qui fournissent une solution complète de gestion de flotte :
+1. `fleet_advanced_management` : Fonctionnalités de gestion de flotte de base
+2. `fleet_dashboard` : Analyse avancée et suivi des KPI
 
 ## Modules
 
-### Fleet Advanced Management
-The core module provides comprehensive fleet management capabilities including:
-- Vehicle Management
-- Driver Management
-- Fuel Expense Tracking
-- Maintenance Planning
-- Document Management
-- Reservation System
-- Cost Analysis
+### Gestion Avancée de Flotte
+Le module de base offre des capacités complètes de gestion de flotte, y compris :
+- Gestion des véhicules
+- Gestion des conducteurs
+- Suivi des dépenses de carburant
+- Planification de la maintenance
+- Gestion des documents
+- Système de réservation
+- Analyse des coûts
 
-### Fleet Dashboard
-The dashboard module extends the core functionality with:
-- Real-time Analytics Dashboard
-- KPI Tracking System
-- Interactive Charts and Graphs
-- Performance Metrics
-- Document Expiry Tracking
-- Financial Analysis Tools
+### Tableau de Bord de Flotte
+Le module de tableau de bord étend les fonctionnalités de base avec :
+- Tableau de bord d'analyse en temps réel
+- Système de suivi des KPI
+- Graphiques et diagrammes interactifs
+- Indicateurs de performance
+- Suivi des expirations de documents
+- Outils d'analyse financière
 
 ## Installation
 
-### Prerequisites
-- Odoo 16.0 or later
+### Prérequis
+- Odoo 15 ou version ultérieure
 - Python 3.8+
 - PostgreSQL 12+
 
-### Installation Steps
-1. Clone this repository into your Odoo addons directory:
+### Étapes d'installation
+1. Clonez ce dépôt dans votre répertoire d'addons Odoo :
 ```bash
 cd /path/to/odoo/addons
 git clone https://github.com/your-repository/gestion_fleet.git
 ```
 
-2. Update your Odoo configuration file (`odoo.conf`) to include the path to these modules:
+2. Mettez à jour votre fichier de configuration Odoo (`odoo.conf`) pour inclure le chemin vers ces modules :
 ```
 addons_path = /path/to/odoo/addons,/path/to/odoo/addons/gestion_fleet
 ```
 
-3. Restart your Odoo server:
+3. Redémarrez votre serveur Odoo :
 ```bash
 service odoo restart
 ```
 
-4. Install the modules through Odoo's interface:
-   - Go to Apps
-   - Remove the 'Apps' filter and search for:
-     - "Fleet Advanced Management"
-     - "Fleet Dashboard"
-   - Install both modules
+4. Installez les modules via l'interface Odoo :
+   - Allez dans Apps
+   - Supprimez le filtre 'Apps' et recherchez :
+     - "Gestion Avancée de Flotte"
+     - "Tableau de Bord de Flotte"
+   - Installez les deux modules
 
 ## Configuration
 
-### Initial Setup
-1. **Security Groups**
-   - Fleet User: Basic access to fleet operations
-   - Fleet Manager: Full access to all features
-   - Fleet Dashboard User: Access to dashboards
-   - Fleet Dashboard Manager: KPI configuration rights
+### Configuration Initiale
+1. **Groupes de Sécurité**
+   - Utilisateur de Flotte : Accès de base aux opérations de flotte
+   - Gestionnaire de Flotte : Accès complet à toutes les fonctionnalités
+   - Utilisateur du Tableau de Bord de Flotte : Accès aux tableaux de bord
+   - Gestionnaire du Tableau de Bord de Flotte : Droits de configuration des KPI
 
-2. **Master Data**
-   - Configure vehicle types and categories
-   - Set up driver profiles
-   - Define maintenance schedules
-   - Configure expense categories
-   - Set up document types
+2. **Données de Base**
+   - Configurer les types et catégories de véhicules
+   - Configurer les profils des conducteurs
+   - Définir les plannings de maintenance
+   - Configurer les catégories de dépenses
+   - Configurer les types de documents
 
-3. **Dashboard Configuration**
-   - Configure KPIs and targets
-   - Customize dashboard layouts
-   - Set up alert thresholds
+3. **Configuration du Tableau de Bord**
+   - Configurer les KPI et les objectifs
+   - Personnaliser les mises en page du tableau de bord
+   - Configurer les seuils d'alerte
 
-## Features
+## Fonctionnalités
 
-### Vehicle Management
-- Complete vehicle lifecycle management
-- Maintenance scheduling and tracking
-- Fuel consumption monitoring
-- Cost tracking and analysis
-- Document management
+### Gestion des Véhicules
+- Gestion complète du cycle de vie des véhicules
+- Planification et suivi de la maintenance
+- Suivi de la consommation de carburant
+- Suivi et analyse des coûts
+- Gestion des documents
 
-### Driver Management
-- Driver profiles and documentation
-- License tracking and renewal alerts
-- Performance monitoring
-- Schedule management
+### Gestion des Conducteurs
+- Profils et documentation des conducteurs
+- Suivi et renouvellement des licences
+- Suivi des performances
+- Gestion des plannings
 
 ### Maintenance
-- Preventive maintenance scheduling
-- Repair tracking
-- Service history
-- Cost analysis
-- Vendor management
+- Planification de la maintenance préventive
+- Suivi des réparations
+- Historique des services
+- Analyse des coûts
+- Gestion des fournisseurs
 
-### Reservations
-- Vehicle booking system
-- Calendar integration
-- Conflict prevention
-- Usage tracking
-- Cost allocation
+### Réservations
+- Système de réservation de véhicules
+- Intégration du calendrier
+- Prévention des conflits
+- Suivi de l'utilisation
+- Allocation des coûts
 
-### Document Management
-- Document storage and tracking
-- Expiry notifications
-- Renewal management
-- Digital document archive
+### Gestion des Documents
+- Stockage et suivi des documents
+- Notifications d'expiration
+- Gestion des renouvellements
+- Archive numérique des documents
 
-### Analytics & Reporting
-- Comprehensive dashboards
-- KPI tracking
-- Cost analysis
-- Performance metrics
-- Custom report generation
+### Analyse & Reporting
+- Tableaux de bord complets
+- Suivi des KPI
+- Analyse des coûts
+- Indicateurs de performance
+- Génération de rapports personnalisés
 
-## Usage
+## Utilisation
 
-### Basic Operations
-1. **Vehicle Management**
+### Opérations de Base
+1. **Gestion des Véhicules**
    ```
-   Fleet Management > Vehicles > Vehicles
+   Gestion de Flotte > Véhicules > Véhicules
    ```
-   - Add new vehicles
-   - Track vehicle status
-   - Monitor costs
+   - Ajouter de nouveaux véhicules
+   - Suivre l'état des véhicules
+   - Surveiller les coûts
 
-2. **Driver Management**
+2. **Gestion des Conducteurs**
    ```
-   Fleet Management > Drivers > Drivers
+   Gestion de Flotte > Conducteurs > Conducteurs
    ```
-   - Manage driver profiles
-   - Track assignments
-   - Monitor performance
+   - Gérer les profils des conducteurs
+   - Suivre les affectations
+   - Surveiller les performances
 
 3. **Maintenance**
    ```
-   Fleet Management > Operations > Maintenance
+   Gestion de Flotte > Opérations > Maintenance
    ```
-   - Schedule services
-   - Track repairs
-   - Monitor costs
+   - Planifier les services
+   - Suivre les réparations
+   - Surveiller les coûts
 
-4. **Reservations**
+4. **Réservations**
    ```
-   Fleet Management > Operations > Reservations
+   Gestion de Flotte > Opérations > Réservations
    ```
-   - Book vehicles
-   - Manage schedules
-   - Track usage
+   - Réserver des véhicules
+   - Gérer les plannings
+   - Suivre l'utilisation
 
-### Dashboard Operations
-1. **Main Dashboard**
+### Opérations du Tableau de Bord
+1. **Tableau de Bord Principal**
    ```
-   Fleet Dashboard > Dashboards
+   Tableau de Bord de Flotte > Tableaux de Bord
    ```
-   - View overall fleet status
-   - Monitor key metrics
-   - Track performance
+   - Voir l'état général de la flotte
+   - Surveiller les indicateurs clés
+   - Suivre les performances
 
-2. **KPI Dashboard**
+2. **Tableau de Bord des KPI**
    ```
-   Fleet Dashboard > KPI Dashboard
+   Tableau de Bord de Flotte > Tableau de Bord des KPI
    ```
-   - Configure KPIs
-   - Set targets
-   - Monitor trends
+   - Configurer les KPI
+   - Définir les objectifs
+   - Surveiller les tendances
 
-## Development
+## Développement
 
-### Module Structure
+### Structure du Module
 ```
 gestion_fleet/
 ├── README.md
@@ -214,32 +214,32 @@ gestion_fleet/
     └── kpi_dashboard_views.xml
 ```
 
-### Extending the Modules
-- Follow Odoo's inheritance mechanisms
-- Use proper dependency management
-- Maintain security configurations
-- Follow coding standards
+### Extension des Modules
+- Suivre les mécanismes d'héritage d'Odoo
+- Utiliser une gestion appropriée des dépendances
+- Maintenir les configurations de sécurité
+- Suivre les normes de codage
 
 ## Support
-For support and bug reports, please create an issue in the repository or contact:
-- Email: support@yourcompany.com
-- Website: https://www.yourcompany.com
+Pour le support et les rapports de bugs, veuillez créer un problème dans le dépôt ou contacter :
+- Email : support@yourcompany.com
+- Site Web : https://www.yourcompany.com
 
-## Contributing
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
+## Contribuer
+1. Forker le dépôt
+2. Créer une branche de fonctionnalité
+3. Commiter vos modifications
+4. Pousser vers la branche
+5. Créer une Pull Request
 
-## License
-This project is licensed under LGPL-3 - see the LICENSE file for details.
+## Licence
+Ce projet est sous licence LGPL-3 - voir le fichier LICENSE pour plus de détails.
 
-## Authors
-- Your Company Name
-- Contributors list
+## Auteurs
+- Nom de votre entreprise
+- Liste des contributeurs
 
-## Acknowledgments
-- Odoo Community
-- Contributors
-- Users providing feedback
+## Remerciements
+- Communauté Odoo
+- Contributeurs
+- Utilisateurs fournissant des retours
