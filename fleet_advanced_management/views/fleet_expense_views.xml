@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Vue Formulaire de Dépense -->
+        <record id="fleet_expense_view_form" model="ir.ui.view">
+            <field name="name">fleet.expense.form</field>
+            <field name="model">fleet.expense</field>
+            <field name="arch" type="xml">
+                <form string="Dépense">
+                    <header>
+                        <button name="action_submit" string="Soumettre" type="object" 
+                                class="oe_highlight" states="draft"/>
+                        <button name="action_approve" string="Approuver" type="object" 
+                                class="oe_highlight" states="submitted"
+                                groups="fleet_advanced_management.group_fleet_manager"/>
+                        <button name="action_pay" string="Marquer comme payé" type="object" 
+                                class="oe_highlight" states="approved"/>
+                        <button name="action_cancel" string="Annuler" type="object" 
+                                states="draft,submitted,approved"/>
+                        <button name="action_draft" string="Réinitialiser en brouillon" type="object" 
+                                states="cancelled"/>
+                        <field name="state" widget="statusbar" 
+                               statusbar_visible="draft,submitted,approved,paid"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="action_view_analytics" type="object" 
+                                    class="oe_stat_button" icon="fa-bar-chart">
+                                <span>Analyse</span>
+                            </button>
+                        </div>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" readonly="1"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="date"/>
+                                <field name="vehicle_id"/>
+                                <field name="driver_id"/>
+                                <field name="expense_type"/>
+                            </group>
+                            <group>
+                                <field name="amount" widget="monetary"/>
+                                <field name="currency_id" invisible="1"/>
+                                <field name="company_id" groups="base.group_multi_company"/>
+                                <field name="analytic_account_id" groups="analytic.group_analytic_accounting"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Détails" name="details">
+                                <group>
+                                    <group attrs="{'invisible': [('expense_type', '!=', 'fuel')]}">
+                                        <field name="liters"/>
+                                        <field name="price_per_liter"/>
+                                        <field name="odometer"/>
+                                        <field name="fuel_type"/>
+                                    </group>
+                                    <group attrs="{'invisible': [('expense_type', 'not in', ['repair', 'maintenance'])]}">
+                                        <field name="service_type_id"/>
+                                        <field name="vendor_id"/>
+                                        <field name="invoice_ref"/>
+                                        <field name="next_service_date"/>
+                                    </group>
+                                    <group attrs="{'invisible': [('expense_type', 'not in', ['insurance', 'tax'])]}">
+                                        <field name="start_date"/>
+                                        <field name="end_date"/>
+                                        <field name="policy_number"/>
+                                    </group>
+                                </group>
+                                <field name="description" placeholder="Ajoutez des notes supplémentaires ici..."/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <!-- Vue Liste de Dépense -->
+        <record id="fleet_expense_view_tree" model="ir.ui.view">
+            <field name="name">fleet.expense.tree</field>
+            <field name="model">fleet.expense</field>
+            <field name="arch" type="xml">
+                <tree string="Dépenses" decoration-info="state == 'draft'" 
+                      decoration-warning="state == 'submitted'"
+                      decoration-success="state == 'approved'"
+                      decoration-muted="state == 'cancelled'">
+                    <field name="name"/>
+                    <field name="date"/>
+                    <field name="vehicle_id"/>
+                    <field name="driver_id"/>
+                    <field name="expense_type"/>
+                    <field name="amount" sum="Montant total"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Vue Recherche de Dépense -->
+        <record id="fleet_expense_view_search" model="ir.ui.view">
+            <field name="name">fleet.expense.search</field>
+            <field name="model">fleet.expense</field>
+            <field name="arch" type="xml">
+                <search string="Rechercher des dépenses">
+                    <field name="name"/>
+                    <field name="vehicle_id"/>
+                    <field name="driver_id"/>
+                    <separator/>
+                    <filter string="Brouillon" name="draft" domain="[('state', '=', 'draft')]"/>
+                    <filter string="Soumis" name="submitted" domain="[('state', '=', 'submitted')]"/>
+                    <filter string="Approuvé" name="approved" domain="[('state', '=', 'approved')]"/>
+                    <filter string="Payé" name="paid" domain="[('state', '=', 'paid')]"/>
+                    <separator/>
+                    <filter string="Carburant" name="fuel" domain="[('expense_type', '=', 'fuel')]"/>
+                    <filter string="Maintenance" name="maintenance" 
+                            domain="[('expense_type', 'in', ['repair', 'maintenance'])]"/>
+                    <filter string="Assurance" name="insurance" domain="[('expense_type', '=', 'insurance')]"/>
+                    <group expand="0" string="Grouper par">
+                        <filter string="Véhicule" name="group_by_vehicle" context="{'group_by': 'vehicle_id'}"/>
+                        <filter string="Conducteur" name="group_by_driver" context="{'group_by': 'driver_id'}"/>
+                        <filter string="Type" name="group_by_type" context="{'group_by': 'expense_type'}"/>
+                        <filter string="Statut" name="group_by_state" context="{'group_by': 'state'}"/>
+                        <filter string="Mois" name="group_by_month" context="{'group_by': 'date:month'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- Vue Pivot de Dépense -->
+        <record id="fleet_expense_view_pivot" model="ir.ui.view">
+            <field name="name">fleet.expense.pivot</field>
+            <field name="model">fleet.expense</field>
+            <field name="arch" type="xml">
+                <pivot string="Analyse des dépenses">
+                    <field name="date" type="row"/>
+                    <field name="expense_type" type="col"/>
+                    <field name="amount" type="measure"/>
+                </pivot>
+            </field>
+        </record>
+
+        <!-- Vue Graphique de Dépense -->
+        <record id="fleet_expense_view_graph" model="ir.ui.view">
+            <field name="name">fleet.expense.graph</field>
+            <field name="model">fleet.expense</field>
+            <field name="arch" type="xml">
+                <graph string="Analyse des dépenses">
+                    <field name="date"/>
+                    <field name="amount" type="measure"/>
+                </graph>
+            </field>
+        </record>
+
+        <!-- Action Fenêtre de Dépense -->
+        <record id="action_fleet_expense" model="ir.actions.act_window">
+            <field name="name">Dépenses</field>
+            <field name="res_model">fleet.expense</field>
+            <field name="view_mode">tree,form,pivot,graph</field>
+            <field name="context">{'search_default_draft': 1}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Créez votre première dépense
+                </p>
+                <p>
+                    Suivez et gérez toutes vos dépenses liées à la flotte, y compris le carburant,
+                    la maintenance, les réparations, l'assurance et les taxes.
+                </p>
+            </field>
+        </record>
+
+        <!-- Éléments de Menu -->
+        <!-- <menuitem id="menu_fleet_expense"
+                  name="Dépenses"
+                  parent="menu_fleet_vehicle_root"
+                  action="action_fleet_expense"
+                  sequence="30"/>
+
+        <menuitem id="menu_fleet_expense_analysis"
+                  name="Analyse des dépenses"
+                  parent="menu_fleet_vehicle_root"
+                  action="action_fleet_expense"
+                  sequence="31"/> -->
+    </data>
+</odoo>

@@ -1,0 +1,191 @@
+/* Styles généraux */
+.wms-dashboard {
+    padding: 20px;
+    background-color: #f8f9fa;
+}
+
+/* En-tête */
+.dashboard-header {
+    background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+    padding: 30px 0;
+    margin: -20px -20px 20px -20px;
+    color: white;
+}
+
+.header-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.dashboard-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.welcome-text {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* Cartes */
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-header {
+    background-color: white;
+    border-bottom: 1px solid #eee;
+    padding: 15px 20px;
+    border-radius: 10px 10px 0 0 !important;
+}
+
+.card-header h5 {
+    color: #2c3e50;
+    font-weight: 600;
+    margin: 0;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+/* Profil utilisateur */
+.profile-card {
+    text-align: center;
+}
+
+.profile-image {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid #fff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.employee-icon {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Grille de statistiques */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.stat-item {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+/* Légende du graphique */
+.chart-legend {
+    display: flex;
+    gap: 15px;
+    font-size: 0.9rem;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.legend-item i {
+    font-size: 0.8rem;
+}
+
+/* Graphique */
+#vehicleStatusChart {
+    height: 300px;
+    margin-top: 20px;
+}
+
+/* Icônes */
+.fa {
+    font-size: 1.2rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .dashboard-title {
+        font-size: 2rem;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .chart-legend {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Couleurs des statuts */
+.text-success {
+    color: #28a745 !important;
+}
+
+.text-warning {
+    color: #ffc107 !important;
+}
+
+.text-info {
+    color: #17a2b8 !important;
+}
+
+/* Hover effects */
+.stat-item:hover {
+    background-color: #e9ecef;
+    cursor: pointer;
+}
+
+.card-header:hover {
+    background-color: #f8f9fa;
+} 

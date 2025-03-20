@@ -1,0 +1,175 @@
+.row{
+    margin-left: 0px;
+    margin-top: 1%;
+}
+.cout{
+    padding-right: 0px;
+    padding-left: 0px;
+    border-radius: 8px;
+    flex: 0 0 259px;
+    max-width: 25%;
+    margin-left: 40px !important;
+    box-shadow: 10px 5px 5px #969696;
+    height: 100px;
+    margin-bottom: 1%;
+}
+
+.number{
+    padding-right: 0px;
+    padding-left: 0px;
+    flex: 0 0 359.333333px;
+    max-width: 33.33333333%;
+    margin-left: 40px !important;
+    box-shadow: 10px 5px 5px #969696;
+    height: 100px;
+    border-radius: 8px;
+    margin-bottom: 1%;
+}
+
+.icon-entrepot{
+    background: #2b378b82;
+    height: 100px;
+}
+.entrepot{
+    height: 100px;
+}
+.icon-projet{
+    background: #f460db7a;
+    height: 100px;
+}
+.projet {
+    height: 100px;
+}
+.icon-chantier{
+    background: hsl(149deg 36% 48% / 47%);
+    height: 100px;
+}
+.chantier {
+    height: 100px;
+}
+.icon-equipe{
+    background: #ffc10075;
+    height: 100px;
+}
+.equipe {
+    height: 100px;
+}
+
+.icon-reception {
+    background: #ffc10075;
+    height: 100px;
+}
+
+.icon-transfert {
+    background: hsl(149deg 36% 48% / 47%);
+    height: 100px;
+}
+.icon-sortie {
+    background: #2b378b82;
+    height: 100px;
+}
+
+.wms-number {
+    display: inline-flex;
+    width: 100%;
+    border: 1px solid #e1e1e1;
+    margin-bottom: 10px;
+}
+
+.wms-icon {
+    width: 30%;
+    text-align: center;
+    padding: 10px;
+    background: #bfc7ff;
+}
+
+.wms-detail {
+    padding: 10px;
+    width: 70%;
+}
+
+.wms-detail .label {
+  margin-bottom: 0;
+  text-align: right;
+}
+
+.value-compte{
+    text-align: right;
+    font-size: 25px;
+    font-weight: 100;
+    font-style: italic;
+    margin-bottom: 0;
+}
+
+.wms-chart{
+  /* border: 1px solid #e1e1e1; */
+  padding-left: 0px;
+  padding-right: 0px;
+  margin-bottom: 1.5%;
+}
+
+.main-header {
+  padding: 4px;
+  padding-left: 8px;
+  border: 1px solid #e1e1e1;
+  border-bottom: none;
+  font-weight: bolder;
+}
+
+.main-content {
+    border: 1px solid #e1e1e1;
+}
+
+.highcharts-legend-item > text {
+    font-size: 10px !important;
+}
+
+.wms-dashboard {
+    padding-right: 10px;
+}
+
+#div1, #div2 {
+    height: 200px !important;
+}
+
+.wms-row {
+  margin-top: 0px;
+}
+
+.px-0 {
+    padding-left: 19px !important;
+}
+
+.dashboard_title {
+  text-align: center;
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 3px;
+  font-family: -webkit-body;
+}
+
+.title_h1 {
+  text-align: center;
+  color: #ff7900;
+  font-size: 30px;
+  margin: 0;
+  font-weight: 700;
+  font-family: -webkit-body;
+}
+
+.info_profil{
+    margin-bottom: 20px;
+}
+
+.p_style{
+  color: #000;
+  margin-bottom: 5px;
+  font-size: 12px;
+  margin-left: 10px;
+}
+
+.span_style{
+  color: #000;
+  font-size: 16px;
+  font-weight: 900;
+}

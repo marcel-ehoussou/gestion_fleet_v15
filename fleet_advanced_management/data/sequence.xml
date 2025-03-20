@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="seq_fleet_reservation" model="ir.sequence">
+            <field name="name">Réservation de véhicule</field>
+            <field name="code">fleet.reservation</field>
+            <field name="prefix">RES/</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_fleet_expense" model="ir.sequence">
+            <field name="name">Dépense de flotte</field>
+            <field name="code">fleet.expense</field>
+            <field name="prefix">EXP/</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        
+    </data>
+</odoo>
