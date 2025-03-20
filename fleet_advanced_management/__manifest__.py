@@ -40,6 +40,7 @@
         'views/fleet_maintenance_views.xml',
         'views/fleet_reservation_views.xml',
         'views/fleet_document_views.xml',
+        'views/fleet_fuel_log_views.xml',
         'menus/fleet_menu_views.xml',
         'menus/menu_views.xml',
     ],

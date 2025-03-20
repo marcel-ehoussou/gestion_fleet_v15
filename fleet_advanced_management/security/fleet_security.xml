@@ -38,6 +38,18 @@
             <field name="perm_unlink" eval="True"/>
         </record>
 
+        <!-- Règle de multi-société pour les véhicules -->
+        <record id="fleet_vehicle_company_rule" model="ir.rule">
+            <field name="name">Véhicule de flotte : Multi-société</field>
+            <field name="model_id" ref="model_fleet_vehicle"/>
+            <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+            <field name="groups" eval="[(4, ref('group_fleet_user')), (4, ref('group_fleet_manager'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
         <!-- Règles similaires pour d'autres modèles -->
         <!-- Règles de conducteur -->
         <record id="fleet_driver_rule_user" model="ir.rule">

@@ -116,5 +116,11 @@
                   parent="menu_fleet_reporting"
                   action="action_fleet_maintenance"
                   sequence="2"/>
+
+        <menuitem id="menu_fleet_vehicle_fuel_log"
+              name="Journal de carburant"
+              parent="menu_fleet_reporting"
+              action="action_fleet_vehicle_fuel_log"
+              sequence="3"/>
     </data>
 </odoo>

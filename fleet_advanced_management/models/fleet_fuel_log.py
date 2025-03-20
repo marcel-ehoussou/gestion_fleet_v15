@@ -42,12 +42,46 @@ class FleetVehicleFuelLog(models.Model):
     notes = fields.Text(string='Notes')
     full_tank = fields.Boolean(string='Plein complet')
     consumption = fields.Float(string='Consommation (L/100km)', compute='_compute_consumption')
-    
-    # @api.model
-    # def create(self, vals):
-    #     if vals.get('name', _('Nouveau')) == _('Nouveau')):
-    #         vals['name'] = self.env['ir.sequence'].next_by_code('fleet.fuel.log') or _('Nouveau')
-    #     return super(FleetVehicleFuelLog, self).create(vals)
+
+    # Champs pour les activités
+    activity_type_id = fields.Many2one('mail.activity.type', string='Type d\'activité')
+    activity_state = fields.Selection([
+        ('overdue', 'En retard'),
+        ('today', 'Aujourd\'hui'),
+        ('upcoming', 'À venir'),
+        ('done', 'Terminé'),
+        ('cancelled', 'Annulé')
+    ], string='État de l\'activité', compute='_compute_activity_state')
+    activity_user_id = fields.Many2one('res.users', string='Responsable')
+    activity_date_deadline = fields.Date(string='Date d\'échéance')
+    activity_summary = fields.Char(string='Résumé de l\'activité')
+    activity_exception_decoration = fields.Selection([
+        ('warning', 'Attention'),
+        ('danger', 'Danger'),
+        ('success', 'Succès'),
+        ('info', 'Information')
+    ], string='Décoration d\'exception')
+    activity_exception_icon = fields.Char(string='Icône d\'exception')
+    activity_exception_type = fields.Selection([
+        ('user_error', 'Erreur utilisateur'),
+        ('access_error', 'Erreur d\'accès'),
+        ('validation_error', 'Erreur de validation'),
+        ('missing_error', 'Erreur de données manquantes'),
+        ('null_error', 'Erreur de valeur nulle'),
+        ('code_error', 'Erreur de code')
+    ], string='Type d\'exception')
+
+    @api.depends('activity_date_deadline')
+    def _compute_activity_state(self):
+        for record in self:
+            if not record.activity_date_deadline:
+                record.activity_state = 'done'
+            elif record.activity_date_deadline < fields.Date.today():
+                record.activity_state = 'overdue'
+            elif record.activity_date_deadline == fields.Date.today():
+                record.activity_state = 'today'
+            else:
+                record.activity_state = 'upcoming'
 
     @api.depends('liters', 'price_per_liter')
     def _compute_amount(self):
